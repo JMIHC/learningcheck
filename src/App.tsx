@@ -1,24 +1,37 @@
 import * as React from 'react';
+import { BrowserRouter as BrowserRouter, Link, Route } from 'react-router-dom';
 import './App.css';
 import CheckAddition from './CheckAddition';
 import CheckSubtraction from './CheckSubtraction';
 
-import logo from './logo.svg';
+const Index = () => <h2>Home</h2>;
+const Add = () => <CheckAddition/>;
+const Subtract = () => <CheckSubtraction/>;
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <CheckAddition/>
-        <CheckSubtraction/>
+      <BrowserRouter>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/Add/">Add</Link>
+            </li>
+            <li>
+              <Link to="/Subtract/">Subtract</Link>
+            </li>
+          </ul>
+        </nav>
+  
+        <Route path="/" exact={true} component={Index} />
+        <Route path="/Add/" component={Add} />
+        <Route path="/Subtract/" component={Subtract} />
       </div>
+    </BrowserRouter>
     );
   }
 }
