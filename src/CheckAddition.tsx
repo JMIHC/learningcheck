@@ -3,15 +3,15 @@ import './CheckAddition.css';
 import { CheckAdd } from './CheckFunctions'
 
 export interface ICheckAdditionState {
-  answer?: number;
-  leftFactor?: number;
-  rightFactor?: number;
+  answer: number;
+  leftFactor: number;
+  rightFactor: number;
 }
 
 class CheckAddition extends React.Component<object, ICheckAdditionState> {
   constructor(props: any) {
     super(props);
-    this.state = {};
+    this.state = {leftFactor: 0, rightFactor: 0, answer: 0 };
   }
 
   public render() {
@@ -32,7 +32,7 @@ class CheckAddition extends React.Component<object, ICheckAdditionState> {
   }
 
   private checkAnswer(): JSX.Element {
-    if(this.state && this.state.leftFactor && this.state.rightFactor && this.state.answer) {
+    if(this.state && !isNaN(this.state.leftFactor) && !isNaN(this.state.rightFactor) && !isNaN(this.state.answer)) {
       return <CheckAdd addends={[this.state.leftFactor,this.state.rightFactor]} sum={this.state.answer} />;
     }
     return <div/>;
