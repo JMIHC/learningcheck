@@ -2,6 +2,8 @@ import * as React from 'react';
 import './CheckAddition.css';
 import { CheckAdd } from './CheckFunctions'
 
+import { Container, Form, FormGroup } from 'reactstrap';
+
 export interface ICheckAdditionState {
   answer: number;
   leftFactor: number;
@@ -16,18 +18,22 @@ class CheckAddition extends React.Component<object, ICheckAdditionState> {
 
   public render() {
     return (
+      <Container>
       <div className="CheckAddition">
-        <span>
+      <Form>
+        <FormGroup>
           <input type="number" name="leftFactor" id="leftFactorInput" value={this.state.leftFactor} onChange={this.handleChangeEvent} />
           <span>&#43;</span>
           <input type="number" name="rightFactor" id="rightFactorInput" value={this.state.rightFactor} onChange={this.handleChangeEvent} />
-        </span>
-        <div>
+        </FormGroup>
+        <FormGroup>
           <label htmlFor="answerInput">Answer:</label>
           <input type="number" name="answer" id="answerInput" value={this.state.answer} onChange={this.handleChangeEvent} />
-        </div>
+        </FormGroup>
         <div>{this.checkAnswer()}</div>
+        </Form>
       </div>
+      </Container>
     );
   }
 
